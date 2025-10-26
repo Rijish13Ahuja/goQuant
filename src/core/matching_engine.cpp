@@ -21,7 +21,16 @@ namespace GoQuant
             return false;
         }
 
-        return book_it->second->add_order(order);
+        std::vector<Trade> trades;
+        bool success = book_it->second->add_order(order, trades);
+
+        for (const auto &trade : trades)
+        {
+            std::cout << "EXECUTED: " << trade.symbol << " " << trade.quantity
+                      << " @ " << trade.price << " (" << trade.aggressor_side << ")" << std::endl;
+        }
+
+        return success;
     }
 
     bool MatchingEngine::cancel_order(const std::string &symbol, const std::string &order_id)
