@@ -77,12 +77,11 @@ namespace GoQuant
         while (!opposite_book.empty() && !order.is_fully_filled())
         {
             auto best_level = opposite_book.begin();
-            double best_price = best_level->first;
-            auto &orders_at_price = best_level->second;
 
-            while (!orders_at_price.empty() && !order.is_fully_filled())
+            while (!best_level->second.empty() && !order.is_fully_filled())
             {
-                Order &maker_order = orders_at_price.front();
+                Order &maker_order = best_level->second.front();
+                std::string maker_id = maker_order.order_id;
 
                 double fill_quantity = std::min(order.leaves_quantity, maker_order.leaves_quantity);
                 double fill_price = maker_order.price;
@@ -91,13 +90,7 @@ namespace GoQuant
 
                 if (maker_order.is_fully_filled())
                 {
-                    remove_from_book(maker_order.order_id);
-                    orders_at_price.pop_front();
-                }
-
-                if (orders_at_price.empty())
-                {
-                    opposite_book.erase(best_level);
+                    remove_from_book(maker_id);
                     break;
                 }
             }
@@ -121,11 +114,10 @@ namespace GoQuant
             if (!can_match)
                 break;
 
-            auto &orders_at_price = best_level->second;
-
-            while (!orders_at_price.empty() && !order.is_fully_filled())
+            while (!best_level->second.empty() && !order.is_fully_filled())
             {
-                Order &maker_order = orders_at_price.front();
+                Order &maker_order = best_level->second.front();
+                std::string maker_id = maker_order.order_id;
 
                 double fill_quantity = std::min(order.leaves_quantity, maker_order.leaves_quantity);
                 double fill_price = maker_order.price;
@@ -134,13 +126,7 @@ namespace GoQuant
 
                 if (maker_order.is_fully_filled())
                 {
-                    remove_from_book(maker_order.order_id);
-                    orders_at_price.pop_front();
-                }
-
-                if (orders_at_price.empty())
-                {
-                    opposite_book.erase(best_level);
+                    remove_from_book(maker_id);
                     break;
                 }
             }
@@ -211,7 +197,7 @@ namespace GoQuant
 
         OrderLocation loc;
         loc.is_bid = (order.side == OrderSide::BUY);
-        loc.price_it = book.find(order.price);
+        loc.price_level = order.price;
         loc.order_index = level.size() - 1;
         order_lookup_[order.order_id] = loc;
     }
@@ -223,28 +209,44 @@ namespace GoQuant
             return;
 
         auto &loc = it->second;
-        auto &orders = loc.price_it->second;
-
-        if (loc.order_index < orders.size())
+        auto &book = loc.is_bid ? bids_ : asks_;
+        auto price_it = book.find(loc.price_level);
+        if (price_it == book.end())
         {
-            orders.erase(orders.begin() + loc.order_index);
+            order_lookup_.erase(it);
+            return;
+        }
 
-            for (size_t i = loc.order_index; i < orders.size(); ++i)
+        auto &orders = price_it->second;
+
+        size_t found_idx = SIZE_MAX;
+        for (size_t i = 0; i < orders.size(); ++i)
+        {
+            if (orders[i].order_id == order_id)
             {
-                order_lookup_[orders[i].order_id].order_index = i;
+                found_idx = i;
+                break;
             }
+        }
+
+        if (found_idx == SIZE_MAX)
+        {
+            order_lookup_.erase(it);
+            return;
+        }
+
+        orders.erase(orders.begin() + found_idx);
+        for (size_t i = found_idx; i < orders.size(); ++i)
+        {
+            order_lookup_[orders[i].order_id].order_index = i;
         }
 
         if (orders.empty())
         {
             if (loc.is_bid)
-            {
-                bids_.erase(loc.price_it);
-            }
+                bids_.erase(price_it);
             else
-            {
-                asks_.erase(loc.price_it);
-            }
+                asks_.erase(price_it);
         }
 
         order_lookup_.erase(order_id);
@@ -277,7 +279,15 @@ namespace GoQuant
         }
 
         auto &loc = it->second;
-        auto &orders = loc.price_it->second;
+        auto &book = loc.is_bid ? bids_ : asks_;
+        auto price_it = book.find(loc.price_level);
+        if (price_it == book.end())
+        {
+            return false;
+        }
+        auto &orders = price_it->second;
+        if (loc.order_index >= orders.size())
+            return false;
         Order &order = orders[loc.order_index];
 
         if (new_quantity < order.filled_quantity)
@@ -294,7 +304,7 @@ namespace GoQuant
     double OrderBook::get_best_bid() const
     {
         std::lock_guard<std::mutex> lock(book_mutex_);
-        return bids_.empty() ? 0.0 : bids_.begin()->first;
+        return bids_.empty() ? 0.0 : bids_.rbegin()->first;
     }
 
     double OrderBook::get_best_ask() const
@@ -309,16 +319,15 @@ namespace GoQuant
         std::vector<std::pair<double, double>> levels;
 
         size_t count = 0;
-        for (const auto &[price, orders] : bids_)
+        for (auto it = bids_.rbegin(); it != bids_.rend() && count < depth; ++it)
         {
-            if (count++ >= depth)
-                break;
             double total_qty = 0;
-            for (const auto &order : orders)
+            for (const auto &order : it->second)
             {
                 total_qty += order.leaves_quantity;
             }
-            levels.emplace_back(price, total_qty);
+            levels.emplace_back(it->first, total_qty);
+            ++count;
         }
 
         return levels;

@@ -5,6 +5,6 @@ add_executable(matching_engine
 )
 target_link_libraries(matching_engine 
     PRIVATE 
-    Threads::Threads
 )
+
 target_include_directories(matching_engine PRIVATE ${CMAKE_SOURCE_DIR}/include)

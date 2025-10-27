@@ -9,6 +9,8 @@
 #include <mutex>
 #include <functional>
 #include <queue>
+#include <deque>
+#include <unordered_map>
 
 namespace GoQuant
 {
@@ -33,14 +35,13 @@ namespace GoQuant
 
     private:
         std::string symbol_;
-
-        std::map<double, std::deque<Order>, std::greater<double>> bids_;
+        std::map<double, std::deque<Order>> bids_;
         std::map<double, std::deque<Order>> asks_;
 
         struct OrderLocation
         {
             bool is_bid;
-            std::map<double, std::deque<Order>>::iterator price_it;
+            double price_level;
             size_t order_index;
         };
         std::unordered_map<std::string, OrderLocation> order_lookup_;

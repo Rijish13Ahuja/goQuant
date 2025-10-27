@@ -22,12 +22,22 @@ namespace GoQuant
         }
 
         std::vector<Trade> trades;
-        bool success = book_it->second->add_order(order, trades);
+        TradeCallback cb = [this, &trades](const Trade &t)
+        {
+            trades.push_back(t);
+            if (trade_callback_)
+            {
+                trade_callback_(t);
+            }
+            total_trades_++;
+        };
+
+        bool success = book_it->second->add_order(order, cb);
 
         for (const auto &trade : trades)
         {
             std::cout << "EXECUTED: " << trade.symbol << " " << trade.quantity
-                      << " @ " << trade.price << " (" << trade.aggressor_side << ")" << std::endl;
+                      << " @ " << trade.price << " (" << (trade.is_buyer_maker ? "BUYER_MAKER" : "SELLER_MAKER") << ")" << std::endl;
         }
 
         return success;

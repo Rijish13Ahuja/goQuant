@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdint>
 #include <functional>
+#include <cmath>
 
 namespace GoQuant
 {
@@ -18,8 +19,8 @@ namespace GoQuant
     {
         MARKET = 0,
         LIMIT = 1,
-        IOC = 2, // Immediate-Or-Cancel
-        FOK = 3  // Fill-Or-Kill
+        IOC = 2,
+        FOK = 3
     };
 
     enum class OrderStatus : uint8_t
@@ -80,6 +81,7 @@ namespace GoQuant
         }
     };
 
+    struct Trade;
     using TradeCallback = std::function<void(const Trade &)>;
     using OrderUpdateCallback = std::function<void(const Order &)>;
 

@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/rhyth/GoQuant-Matching-Engine/build/cmake_install.cmake",
+		"C:/Users/rhyth/GoQuant-Matching-Engine/build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
