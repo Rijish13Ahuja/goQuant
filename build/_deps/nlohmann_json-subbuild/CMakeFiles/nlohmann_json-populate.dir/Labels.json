@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/nlohmann_json-populate"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/e3a33df061ccc012cc26f96306d6595b/nlohmann_json-populate.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/2c3992f355ff87a02893fdd7ff25e252/nlohmann_json-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/nlohmann_json-subbuild/CMakeFiles/1c058e97363e8399241be62a2369ba9f/nlohmann_json-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"nlohmann_json-populate"
+		],
+		"name" : "nlohmann_json-populate"
+	}
+}

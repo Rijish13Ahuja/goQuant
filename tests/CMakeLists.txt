@@ -1,25 +1,32 @@
+cmake_minimum_required(VERSION 3.15)
+project(GoQuantMatchingEngine VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -O2 -pthread")
+endif()
+
+include_directories(include)
+include_directories(src)
+
 include(FetchContent)
 FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9fdab5992fd8b7ee1ae2d96.zip
+    uWebSockets
+    GIT_REPOSITORY https://github.com/uNetworking/uWebSockets.git
+    GIT_TAG v20.40.0
 )
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(uWebSockets)
 
-add_executable(test_order_book 
-    test_order_book.cpp 
-    ../src/core/order_book.cpp
-    ../src/core/trade.cpp
+FetchContent_Declare(
+    nlohmann_json
+    URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
 )
+FetchContent_MakeAvailable(nlohmann_json)
 
-add_executable(test_matching_engine 
-    test_matching_engine.cpp 
-    ../src/core/matching_engine.cpp
-    ../src/core/order_book.cpp
-    ../src/core/trade.cpp
-)
+add_subdirectory(src)
+add_subdirectory(tests)
 
-target_link_libraries(test_order_book gtest_main)
-target_link_libraries(test_matching_engine gtest_main)
-
-add_test(NAME order_book_test COMMAND test_order_book)
-add_test(NAME matching_engine_test COMMAND test_matching_engine)
+find_package(Threads REQUIRED)

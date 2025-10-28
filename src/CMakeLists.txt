@@ -2,9 +2,17 @@ add_executable(matching_engine
     main.cpp
     core/order_book.cpp
     core/matching_engine.cpp
-)
-target_link_libraries(matching_engine 
-    PRIVATE 
+    core/trade.cpp
+    api/websocket_server.cpp
+    api/json_serializer.cpp
+    market_data/market_data_feed.cpp
+    utils/logger.cpp
+    utils/uuid_generator.cpp
 )
 
-target_include_directories(matching_engine PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(matching_engine 
+    PRIVATE 
+    Threads::Threads
+    uWebSockets
+    nlohmann_json::nlohmann_json
+)

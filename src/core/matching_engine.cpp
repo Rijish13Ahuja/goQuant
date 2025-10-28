@@ -21,23 +21,16 @@ namespace GoQuant
             return false;
         }
 
-        std::vector<Trade> trades;
-        TradeCallback cb = [this, &trades](const Trade &t)
-        {
-            trades.push_back(t);
-            if (trade_callback_)
-            {
-                trade_callback_(t);
-            }
-            total_trades_++;
-        };
+        book_it->second->set_trade_callback([this](const Trade &trade)
+                                            { on_trade_executed(trade); });
 
-        bool success = book_it->second->add_order(order, cb);
+        std::vector<Trade> trades;
+        bool success = book_it->second->add_order(order, trades);
 
         for (const auto &trade : trades)
         {
             std::cout << "EXECUTED: " << trade.symbol << " " << trade.quantity
-                      << " @ " << trade.price << " (" << (trade.is_buyer_maker ? "BUYER_MAKER" : "SELLER_MAKER") << ")" << std::endl;
+                      << " @ " << trade.price << " (" << trade.aggressor_side << ")" << std::endl;
         }
 
         return success;
@@ -71,6 +64,15 @@ namespace GoQuant
             order_books_[symbol] = std::make_shared<OrderBook>(symbol);
             std::cout << "Added symbol: " << symbol << std::endl;
         }
+    }
+
+    void MatchingEngine::on_trade_executed(const Trade &trade)
+    {
+        if (trade_callback_)
+        {
+            trade_callback_(trade);
+        }
+        total_trades_++;
     }
 
 }

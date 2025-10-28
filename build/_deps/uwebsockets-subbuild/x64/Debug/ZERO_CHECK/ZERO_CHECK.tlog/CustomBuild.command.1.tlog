@@ -1,0 +1,10 @@
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\2EFE440E5E32ACD1EB3BC72D042C4C06\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild -BC:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

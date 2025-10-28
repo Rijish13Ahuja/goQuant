@@ -1,0 +1,150 @@
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/tmp/uwebsockets-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/tmp/uwebsockets-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps\uwebsockets-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/tmp/uwebsockets-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps\uwebsockets-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps\uwebsockets-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps\uwebsockets-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\FC5C2E5CBC5BE17E88B71B44F3521E78\UWEBSOCKETS-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps\uwebsockets-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\E74811F291368EF9E41A4E00184407CA\UWEBSOCKETS-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/CMakeFiles/Debug/uwebsockets-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/uwebsockets-populate-prefix/src/uwebsockets-populate-stamp/Debug/uwebsockets-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKEFILES\2EFE440E5E32ACD1EB3BC72D042C4C06\UWEBSOCKETS-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RHYTH\GOQUANT-MATCHING-ENGINE\BUILD\_DEPS\UWEBSOCKETS-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild -BC:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild --check-stamp-file C:/Users/rhyth/GoQuant-Matching-Engine/build/_deps/uwebsockets-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

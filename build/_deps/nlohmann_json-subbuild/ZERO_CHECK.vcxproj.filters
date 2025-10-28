@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\rhyth\GoQuant-Matching-Engine\build\_deps\nlohmann_json-subbuild\CMakeFiles\e3a33df061ccc012cc26f96306d6595b\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{60E6B594-8B41-360D-BBD8-F3B3FAD80C1C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
