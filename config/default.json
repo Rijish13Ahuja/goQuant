@@ -1,0 +1,64 @@
+{
+    "engine": {
+        "websocket_port": 9001,
+        "max_connections": 10000,
+        "order_book_depth": 10,
+        "maker_fee": 0.001,
+        "taker_fee": 0.002,
+        "enable_persistence": true,
+        "persistence_path": "data/",
+        "snapshot_interval_seconds": 60,
+        "max_order_size": 1000.0,
+        "price_tick_size": 0.01,
+        "quantity_step": 0.001,
+        "enable_advanced_orders": true,
+        "performance_stats_interval": 5
+    },
+    "symbols": [
+        {
+            "symbol": "BTC-USDT",
+            "min_price": 0.01,
+            "max_price": 1000000.0,
+            "min_quantity": 0.0001,
+            "max_quantity": 1000.0,
+            "price_tick": 0.01,
+            "quantity_step": 0.0001
+        },
+        {
+            "symbol": "ETH-USDT",
+            "min_price": 0.01,
+            "max_price": 100000.0,
+            "min_quantity": 0.001,
+            "max_quantity": 10000.0,
+            "price_tick": 0.01,
+            "quantity_step": 0.001
+        },
+        {
+            "symbol": "ADA-USDT",
+            "min_price": 0.001,
+            "max_price": 100.0,
+            "min_quantity": 1.0,
+            "max_quantity": 1000000.0,
+            "price_tick": 0.001,
+            "quantity_step": 1.0
+        },
+        {
+            "symbol": "DOT-USDT",
+            "min_price": 0.01,
+            "max_price": 1000.0,
+            "min_quantity": 0.1,
+            "max_quantity": 100000.0,
+            "price_tick": 0.01,
+            "quantity_step": 0.1
+        },
+        {
+            "symbol": "LINK-USDT",
+            "min_price": 0.01,
+            "max_price": 1000.0,
+            "min_quantity": 0.1,
+            "max_quantity": 100000.0,
+            "price_tick": 0.01,
+            "quantity_step": 0.1
+        }
+    ]
+}
